@@ -3,9 +3,9 @@
 #include <string.h>
 
 struct student {
-    char name[20];
-    int age;
-    int rollno;
+    char book_name[20];
+    char author_name[20];
+    int stock_number;
 };
 
 void main() {
@@ -16,7 +16,7 @@ void main() {
 
     printf("Welcome to Library Management System\n");
     do {
-        printf("1. Create record\n2. List record\n3. Add another record\n4. Exit\n");
+        printf("1. Create Book\n2. Books List\n3. Add another Book\n4. Exit\n");
         scanf("%d", &a);
 
         switch (a) {
@@ -27,12 +27,12 @@ void main() {
                     printf("Cannot open file\n");
                     exit(1);
                 }
-                printf("Enter BookName, age, and roll number of the student\n");
+                printf("Enter BookName, AuthorName, and Stock number of the student\n");
                 for (i = 0; ch == 1; i++) {
-                    scanf("%s %d %d", s[i].name, &s[i].age, &s[i].rollno);
-                    fprintf(fp, "%s \t%d\t %d\t", s[i].name, s[i].age, s[i].rollno);
+                    scanf("%s %s %d", s[i].book_name, s[i].author_name, &s[i].stock_number);
+                    fprintf(fp, "%s \t%s\t %d\t", s[i].book_name, s[i].author_name, s[i].stock_number);
                     count++;
-                    printf("Press 1 to add another record and 0 to exit\n");
+                    printf("Press 1 to add another book or 0 to Main menu\n");
                     scanf("%d", &ch);
                 }
                 fclose(fp);
@@ -44,10 +44,10 @@ void main() {
                     printf("Cannot open file\n");
                     exit(1);
                 }
-                printf("Name \tAge \tRoll number \t\n\n");
+                printf("BookName \tAuthorName \tStock Number \t\n\n");
                 for (i = 0; i < count; i++) {
-                    fscanf(fp, "%s %d %d", s[i].name, &s[i].age, &s[i].rollno);
-                    printf("%s\t%d\t%d\t\n\n", s[i].name, s[i].age, s[i].rollno);
+                    fscanf(fp, "%s %s %d", s[i].book_name, s[i].author_name, &s[i].stock_number);
+                    printf("%s\t%s\t%d\t\n\n", s[i].book_name, s[i].author_name, s[i].stock_number);
                 }
                 fclose(fp);
                 break;
@@ -60,9 +60,9 @@ void main() {
                 }
                 ch = 1;
                 for (i = count; ch == 1; i++) {
-                    scanf("%s %d %d", s[i].name, &s[i].age, &s[i].rollno);
-                    fprintf(fp, "%s\t%d\t %d\t", s[i].name, s[i].age, s[i].rollno);
-                    printf("Press 1 to add another record and 0 to exit\n");
+                    scanf("%s %s %d", s[i].book_name, s[i].author_name, &s[i].stock_number);
+                    fprintf(fp, "%s\t%s\t %d\t", s[i].book_name, s[i].author_name, s[i].stock_number);
+                    printf("Press 1 to add another book or 0 to Main menu\n");
                     scanf("%d", &ch);
                     count++;
                 }
